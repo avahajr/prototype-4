@@ -80,6 +80,7 @@ public class FarmerController : MonoBehaviour
 		// If the player should jump...
 		if (m_Grounded && jump)
 		{
+			Debug.Log("PLAYER SHOULD JUMP.");
 			// Add a vertical force to the player.
 			m_Grounded = false;
 			m_Rigidbody2D.AddForce(new Vector2(0f, m_JumpForce));

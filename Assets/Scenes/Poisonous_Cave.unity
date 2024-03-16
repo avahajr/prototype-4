@@ -238,6 +238,7 @@ GameObject:
   - component: {fileID: 700953251}
   - component: {fileID: 700953249}
   - component: {fileID: 700953252}
+  - component: {fileID: 700953253}
   m_Layer: 0
   m_Name: Farmer
   m_TagString: Untagged
@@ -465,6 +466,20 @@ CircleCollider2D:
   m_Offset: {x: 0, y: -0.05}
   serializedVersion: 2
   m_Radius: 0.2
+--- !u!114 &700953253
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 700953245}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dfb73f9c1297b4cbab5623e981c41b39, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  controller: {fileID: 700953249}
+  runSpeed: 40
 --- !u!1 &1151230266 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1717607936738306, guid: 705da690947b19441a1804f0fd389dc6, type: 3}

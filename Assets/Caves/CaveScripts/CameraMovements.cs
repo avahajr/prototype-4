@@ -1,36 +1,16 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
-public class CameraMovements : MonoBehaviour
+public class CameraFollow : MonoBehaviour
 {
-	private Transform _transform;
+    private Vector3 offset = new Vector3(2f, 3f, -10f);
+    private float smoothTime = 0.25f;
+    private Vector3 velocity = Vector3.zero;
 
-	public Vector3 NewPosition;
-	public Vector3 FinalPosition;
-	[Range(0f, 25f)]
-	public float LerpSpeed = 1f;
+    [SerializeField] private Transform target;
 
-	private void Awake ()
-	{
-		_transform = GetComponent<Transform> ();
-		NewPosition = _transform.position;
-		FinalPosition = NewPosition;
-	}
-
-	private void LateUpdate ()
-	{
-		if (Input.GetAxisRaw("Horizontal") == 1) {
-			NewPosition.x += Time.deltaTime * LerpSpeed;
-		}
-
-		if (Input.GetAxisRaw("Horizontal") == -1) {
-			NewPosition.x -= Time.deltaTime * LerpSpeed;
-		}
-
-		//FinalPosition.x = Mathf.Floor (NewPosition.x * 32f) / 32f;
-		FinalPosition.x = NewPosition.x;
-
-		_transform.position = FinalPosition;
-	}
+    private void Update()
+    {
+        Vector3 targetPosition = target.position + offset;
+        transform.position = Vector3.SmoothDamp(transform.position, targetPosition, ref velocity, smoothTime);
+    }
 }

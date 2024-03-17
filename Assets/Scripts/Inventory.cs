@@ -2,12 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Inventory : MonoBehaviour {
+public class Inventory : FarmerController {
 
     #region Singleton
 
     public static Inventory instance;
-
+    public GameObject vine;
     void Awake ()
     {
         if (instance != null)
@@ -26,11 +26,12 @@ public class Inventory : MonoBehaviour {
     public delegate void OnItemChanged();
     public OnItemChanged onItemChangedCallback;
 
-    public int space = 20;	// Amount of slots in inventory
+    public int space = 3;	// Number of slots in inventory
 
     // Current list of items in inventory
     public List<Item> items = new List<Item>();
-
+    
+    
     // Add a new item. If there is enough room we
     // return true. Else we return false.
     public bool Add (Item item)
@@ -63,6 +64,11 @@ public class Inventory : MonoBehaviour {
         // Trigger callback
         if (onItemChangedCallback != null)
             onItemChangedCallback.Invoke();
+    }
+
+    private void SpawnVine()
+    {
+          
     }
 
 }

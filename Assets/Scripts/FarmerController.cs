@@ -54,7 +54,6 @@ public class FarmerController : MonoBehaviour
 
 	public void Move(float move, bool jump)
 	{
-		Debug.Log("move:"+move+"jump:"+jump);
 		//only control the player if grounded or airControl is turned on
 		if (m_Grounded || m_AirControl)
 		{
@@ -80,7 +79,6 @@ public class FarmerController : MonoBehaviour
 		// If the player should jump...
 		if (m_Grounded && jump)
 		{
-			Debug.Log("PLAYER SHOULD JUMP.");
 			// Add a vertical force to the player.
 			m_Grounded = false;
 			m_Rigidbody2D.AddForce(new Vector2(0f, m_JumpForce));
@@ -91,7 +89,6 @@ public class FarmerController : MonoBehaviour
 	private void Flip()
 	{
 		// Switch the way the player is labelled as facing.
-		Debug.Log("Flip");
 		m_FacingRight = !m_FacingRight;
 
 		// Multiply the player's x local scale by -1.

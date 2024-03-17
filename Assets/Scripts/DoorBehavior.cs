@@ -2,20 +2,18 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+
 
 public class DoorBehavior : MonoBehaviour
 {
     public SpriteRenderer spriteRenderer;
     private bool isLocked = true;
     public Sprite unlockedDoor;
+    public float transitionTime = 1f;
+
     
-
-    // Update is called once per frame
-    void FixedUpdate()
-    {
-        Debug.Log(isLocked);
-    }
-
+    
     private void OnTriggerEnter2D(Collider2D other)
     {
         
@@ -25,5 +23,23 @@ public class DoorBehavior : MonoBehaviour
             spriteRenderer.sprite = unlockedDoor;
             other.gameObject.SetActive(false);
         }
+
+
+        if (other.gameObject.CompareTag("Player") && !isLocked)
+        {
+            LoadNextLevel();
+        }
+    }
+
+    void LoadNextLevel()
+    {
+        StartCoroutine(LoadLevel(SceneManager.GetActiveScene().buildIndex + 1));
+    }
+
+    IEnumerator LoadLevel(int levelIndex)
+    {
+        yield return new WaitForSeconds(transitionTime);
+
+        SceneManager.LoadScene(levelIndex);
     }
 }

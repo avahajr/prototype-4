@@ -12,7 +12,12 @@ public class DoorBehavior : MonoBehaviour
     private bool isLocked = true;
     public Sprite unlockedDoor;
     public float transitionTime = 1f;
-    
+
+
+    private void FixedUpdate()
+    {
+        
+    }
     
     private void OnTriggerEnter2D(Collider2D other)
     {
